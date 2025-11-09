@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class GroupProject{
+public class GroupProject {
 
     public static void StudentModule(int arrayLength, String[] firstNameArray, String[] lastNameArray, String[] firstClassArray, String[] firstGrade, int[] firstCredit, String[] secondClassArray, String[] secondGrade, int[] secondCredit, String[] thirdClassArray, String[] thirdGrade, int[] thirdCredit, String[] fourthClassArray, String[] fourthGrade, int[] fourthCredit, String[] fifthClassArray, String[] fifthGrade, int[] fifthCredit, Scanner scnr) {
         // Initial user input to choose a task
@@ -191,9 +191,9 @@ public class GroupProject{
             System.out.println("");
 
         }
-        else if ((userChoice.compareTo("calculate GPA") == 0) || (userChoice.compareTo("GPA calculator") == 0) || (userChoice.compareTo("GPA") == 0)) {
+        else if ((userChoice.compareTo("gpa") == 0) || (userChoice.compareTo("gpa calculator") == 0) || (userChoice.compareTo("GPA") == 0) || (userChoice.compareTo("calculator") == 0)) {
             String studentLastName;
-            int displayNumber = 0;
+            int display = 0;
             int sum = 0;
             int credits = 0;
             
@@ -205,18 +205,185 @@ public class GroupProject{
                 String searcher = lastNameArray[i];
 
                 if (studentLastName.equals(searcher)) {
-                    displayNumber = i;
+                    display = i;
                     break;
                 }
             }
-
-            for (int i = 0; i < 5; i++) {
-                switch (firstGrade[i]) {
-                    case "A":
-                        sum += (4.0 * firstCredit[i]);
-                        credits += firstCredit[i];
-                }
+            if ((firstGrade[display].equals("A")) || (firstGrade[display].equals("A+"))) {
+                sum += (4.0 * firstCredit[display]);
+                credits += secondCredit[display];
+            } else if (firstGrade[display].equals("A-")) {
+                sum += (3.7 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("B+")) {
+                sum += (3.3 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("B")) {
+                sum += (3.0 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("B-")) {
+                sum += (2.7 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("C+")) {
+                sum += (2.3 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("C")) {
+                sum += (2.0 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("D+")) {
+                sum += (1.7 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("D")) {
+                sum += (1.3 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else if (firstGrade[display].equals("D-")) {
+                sum += (0.7 * firstCredit[display]);
+                credits += firstCredit[display];
+            } else {
+                sum += (0.0 * firstCredit[display]);
+                credits += firstCredit[display];
             }
+            if ((secondGrade[display].equals("A")) || (secondGrade[display].equals("A+"))) {
+                sum += (4.0 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("A-")) {
+                sum += (3.7 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("B+")) {
+                sum += (3.3 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("B")) {
+                sum += (3.0 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("B-")) {
+                sum += (2.7 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("C+")) {
+                sum += (2.3 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("C")) {
+                sum += (2.0 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("D+")) {
+                sum += (1.7 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("D")) {
+                sum += (1.3 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else if (secondGrade[display].equals("D-")) {
+                sum += (0.7 * secondCredit[display]);
+                credits += secondCredit[display];
+            } else {
+                sum += (0.0 * secondCredit[display]);
+                credits += secondCredit[display];
+            }
+            if ((thirdGrade[display].equals("A")) || (thirdGrade[display].equals("A+"))) {
+                sum += (4.0 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("A-")) {
+                sum += (3.7 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("B+")) {
+                sum += (3.3 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("B")) {
+                sum += (3.0 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("B-")) {
+                sum += (2.7 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("C+")) {
+                sum += (2.3 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("C")) {
+                sum += (2.0 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("D+")) {
+                sum += (1.7 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("D")) {
+                sum += (1.3 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else if (thirdGrade[display].equals("D-")) {
+                sum += (0.7 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            } else {
+                sum += (0.0 * thirdCredit[display]);
+                credits += thirdCredit[display];
+            }
+            if ((fourthGrade[display].equals("A")) || (fourthGrade[display].equals("A+"))) {
+                sum += (4.0 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("A-")) {
+                sum += (3.7 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("B+")) {
+                sum += (3.3 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("B")) {
+                sum += (3.0 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("B-")) {
+                sum += (2.7 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("C+")) {
+                sum += (2.3 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("C")) {
+                sum += (2.0 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("D+")) {
+                sum += (1.7 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("D")) {
+                sum += (1.3 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else if (fourthGrade[display].equals("D-")) {
+                sum += (0.7 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            } else {
+                sum += (0.0 * fourthCredit[display]);
+                credits += fourthCredit[display];
+            }
+            if ((fifthGrade[display].equals("A")) || (fifthGrade[display].equals("A+"))) {
+                sum += (4.0 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("A-")) {
+                sum += (3.7 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("B+")) {
+                sum += (3.3 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("B")) {
+                sum += (3.0 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("B-")) {
+                sum += (2.7 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("C+")) {
+                sum += (2.3 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("C")) {
+                sum += (2.0 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("D+")) {
+                sum += (1.7 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("D")) {
+                sum += (1.3 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else if (fifthGrade[display].equals("D-")) {
+                sum += (0.7 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            } else {
+                sum += (0.0 * fifthCredit[display]);
+                credits += fifthCredit[display];
+            }
+
+            System.out.println();
+
+            System.out.println("The total GPA is: " + (sum / credits));
+            
         }
     }
     
@@ -246,7 +413,7 @@ public class GroupProject{
         int[] fifthCredit = new int[arrayLength];
 
         //Asks the user to choose which module they want
-        while (!(userModule.equals("-1"))){
+        while (userModule.compareTo("-1") != 0){
             System.out.println("Choose which area you want to search");
             System.out.println("   Students");
             System.out.println("   Course/Faculty");
