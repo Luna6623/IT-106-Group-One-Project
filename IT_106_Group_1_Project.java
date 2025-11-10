@@ -436,8 +436,10 @@ public class GroupProject {
             else if ((userModule.compareTo("Course/Faculty") == 0) || (userModule.compareTo("course/faculty") == 0)) {
                 CourseFacultyModule module = new CourseFacultyModule();
                 module.showMenu();
-               
             }
+            else if ((userModule.compareTo("Utility Tools") == 0) || (userModule.compareTo("utility tools") == 0)) {
+                UtilityTools utilModule = new UtilityTools();
+                utilModule.main();
         }
     }
     
