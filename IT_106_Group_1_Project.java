@@ -440,6 +440,7 @@ public class GroupProject {
             else if ((userModule.compareTo("Utility Tools") == 0) || (userModule.compareTo("utility tools") == 0)) {
                 UtilityTools utilModule = new UtilityTools();
                 utilModule.main();
+            }
         }
     }
     
