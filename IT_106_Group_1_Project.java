@@ -1,3 +1,6 @@
+package javaapplication1;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GroupProject {
@@ -386,7 +389,6 @@ public class GroupProject {
             
         }
     }
-    
 
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
@@ -430,6 +432,9 @@ public class GroupProject {
             // Student module
             if(((userModule.compareTo("students") == 0) || ((userModule.compareTo("student") == 0)))) {
                 StudentModule(arrayLength, firstNameArray, lastNameArray, firstClassArray, firstGrade, firstCredit, secondClassArray, secondGrade, secondCredit, thirdClassArray, thirdGrade, thirdCredit, fourthClassArray, fourthGrade, fourthCredit, fifthClassArray, fifthGrade, fifthCredit, scnr);
+            }
+            else if ((userModule.compareTo("Course/Faculty") == 0) || (userModule.compareTo("course/faculty") == 0)) {
+               
             }
         }
     }
