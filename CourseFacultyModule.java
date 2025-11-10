@@ -34,12 +34,12 @@ public class CourseFacultyModule {
             sc.nextLine(); // consume newline
 
             switch (choice) {
-                case 1 -> addCourse();
-                case 2 -> searchByCode();
-                case 3 -> searchByInstructor();
-                case 4 -> displayCourses();
-                case 5 -> System.out.println("Exiting...");
-                default -> System.out.println("Invalid choice. Try again.");
+                case 1: addCourse();
+                case 2: searchByCode();
+                case 3: searchByInstructor();
+                case 4: displayCourses();
+                case 5: System.out.println("Exiting...");
+                default: System.out.println("Invalid choice. Try again.");
             }
         } while (choice != 5);
     }
