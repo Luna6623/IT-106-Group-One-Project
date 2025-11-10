@@ -1,3 +1,10 @@
+
+package utilitytools; // folder utility tools if called upon
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class UtilityTools {
 
     public static void main(String[] args) {
