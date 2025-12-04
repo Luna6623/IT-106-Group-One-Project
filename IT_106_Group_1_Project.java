@@ -2,6 +2,7 @@ package javaapplication1;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class GroupProject {
 
@@ -563,11 +564,162 @@ public class GroupProject {
             }
         }
     }
+       /*
+   
+   
+   LIBRARY MODULE
+   
+   
+   */
+   
+    static class Book {
+    String title;
+    String author;
+    String isbn;
+    boolean isIssued;
+
+    Book(String title, String author, String isbn) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.isIssued = false;
+    }
+}
+
+   // storage for up to 100 books
+   static Book[] libBooks = new Book[100];
+   static int libCount = 0;
+
+   public static void LibraryModule(Scanner sc) {
+       int choice = 0;
+       do {
+           System.out.println("\n===== Library Module =====");
+           System.out.println("1. Add Book");
+           System.out.println("2. Search Book (by title or ISBN)");
+           System.out.println("3. Issue Book (by ISBN)");
+           System.out.println("4. Return Book (by ISBN)");
+           System.out.println("5. Display Available Books");
+           System.out.println("6. Back to Main Menu");
+           System.out.print("Enter your choice: ");
+   
+           try {
+               choice = sc.nextInt();
+               sc.nextLine(); // clear newline
+   
+               if (choice == 1) {
+                   libAdd(sc);
+               } else if (choice == 2) {
+                   libSearch(sc);
+               } else if (choice == 3) {
+                   libIssue(sc);
+               } else if (choice == 4) {
+                   libReturn(sc);
+               } else if (choice == 5) {
+                   libDisplayAvailable();
+               } else if (choice == 6) {
+                   System.out.println("Returning to Main Menu...");
+               } else {
+                   System.out.println("Invalid choice. Try again.");
+               }
+           } catch (InputMismatchException e) {
+               System.out.println("Please enter a number 1-6.");
+               sc.nextLine(); // clear bad input
+           }
+       } while (choice != 6);
+   }
+   
+   private static void libAdd(Scanner sc) {
+       if (libCount >= libBooks.length) {
+           System.out.println("Library is full. Cannot add more books.");
+           return;
+       }
+       System.out.print("Enter book title: ");
+       String title = sc.nextLine();
+       System.out.print("Enter author name: ");
+       String author = sc.nextLine();
+       System.out.print("Enter ISBN: ");
+       String isbn = sc.nextLine();
+   
+       libBooks[libCount] = new Book(title, author, isbn);
+       libCount++;
+       System.out.println("Book added successfully!");
+   }
+   
+   private static void libSearch(Scanner sc) {
+       System.out.print("Enter title or ISBN to search: ");
+       String key = sc.nextLine().toLowerCase();
+       boolean found = false;
+   
+       for (int i = 0; i < libCount; i++) {
+           Book b = libBooks[i];
+           if (b.title.toLowerCase().contains(key) || b.isbn.equalsIgnoreCase(key)) {
+               System.out.println("Title: " + b.title + " | Author: " + b.author +
+                                  " | ISBN: " + b.isbn + " | Status: " + (b.isIssued ? "Issued" : "Available"));
+               found = true;
+           }
+       }
+       if (!found) System.out.println("No matching book found.");
+   }
+   
+   private static void libIssue(Scanner sc) {
+       System.out.print("Enter ISBN to issue: ");
+       String isbn = sc.nextLine();
+       for (int i = 0; i < libCount; i++) {
+           if (libBooks[i].isbn.equalsIgnoreCase(isbn)) {
+               if (libBooks[i].isIssued) {
+                   System.out.println("Book already issued.");
+               } else {
+                   libBooks[i].isIssued = true;
+                   System.out.println("Book issued successfully!");
+               }
+               return;
+           }
+       }
+       System.out.println("Book not found.");
+   }
+   
+   private static void libReturn(Scanner sc) {
+       System.out.print("Enter ISBN to return: ");
+       String isbn = sc.nextLine();
+       for (int i = 0; i < libCount; i++) {
+           if (libBooks[i].isbn.equalsIgnoreCase(isbn)) {
+               if (!libBooks[i].isIssued) {
+                   System.out.println("Book was not issued.");
+               } else {
+                   libBooks[i].isIssued = false;
+                   System.out.println("Book returned successfully!");
+               }
+               return;
+           }
+       }
+       System.out.println("Book not found.");
+   }
+   
+   private static void libDisplayAvailable() {
+       System.out.println("\nAvailable Books:");
+       boolean any = false;
+       for (int i = 0; i < libCount; i++) {
+           if (!libBooks[i].isIssued) {
+               Book b = libBooks[i];
+               System.out.println("Title: " + b.title + " | Author: " + b.author + " | ISBN: " + b.isbn);
+               any = true;
+           }
+       }
+       if (!any) System.out.println("No available books in the library.");
+   }
+   // ====== END LIBRARY MODULE =====
+
+    /*
+
+    MAIN MODULE
+
+    */
 
 
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
         String userModule = "";
+        boolean response = true;
 
         // Student Arrays
         int arrayLength = 10;
@@ -590,7 +742,7 @@ public class GroupProject {
         int[] fifthCredit = new int[arrayLength];
 
         //Asks the user to choose which module they want
-        while (userModule.compareTo("-1") != 0){
+        while (response){
             System.out.println("Choose which area you want to search");
             System.out.println("   Students");
             System.out.println("   Course/Faculty");
@@ -608,12 +760,27 @@ public class GroupProject {
             if(((userModule.compareTo("students") == 0) || ((userModule.compareTo("student") == 0)))) {
                 StudentModule(arrayLength, firstNameArray, lastNameArray, firstClassArray, firstGrade, firstCredit, secondClassArray, secondGrade, secondCredit, thirdClassArray, thirdGrade, thirdCredit, fourthClassArray, fourthGrade, fourthCredit, fifthClassArray, fifthGrade, fifthCredit, scnr);
             }
+            // Course module
             else if ((userModule.compareTo("Course/Faculty") == 0) || (userModule.compareTo("course/faculty") == 0)) {
                 CourseFacultyModule module = new CourseFacultyModule();
                 module.showMenu();
             }
+            // Utility module
             else if ((userModule.compareTo("Utility Tools") == 0) || (userModule.compareTo("utility tools") == 0)) {
                 Utility();
+            }
+            // Library module
+            else if ((userModule.compareTo("Library") == 0) || ((userModule.compareTo("library") == 0))) {
+               LibraryModule(scnr);
+            }
+            // Exit
+            else if (userModule.equals("-1")) {
+               response = false;
+            }
+            // Retry module
+            else {
+               System.out.println("That is not a valid response. Try again");
+               System.out.println();
             }
         }
     }
